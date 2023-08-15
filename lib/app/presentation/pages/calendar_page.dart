@@ -155,25 +155,35 @@ class _CalendarBodyItemWidget extends StatelessWidget {
         itemCount: dayList.length,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          final date = dayList[index];
-          return SizedBox(
-            width: MediaQuery.sizeOf(context).width / 7,
-            height: MediaQuery.sizeOf(context).width / 7,
-            child: Padding(
-              padding: const EdgeInsets.all(3.0),
-              child: CircleAvatar(
-                backgroundColor:
-                    Color(date.color ?? AppConstants.backgroundColor),
-                child: Center(
-                  child: Text(
-                    switch (date.day) { 0 => '', _ => date.day.toString() },
-                    style: TextStyle(
-                        color: index == 6 ? Colors.red : Colors.black),
+          final day = dayList[index];
+          return switch (day.day) {
+            0 => SizedBox(
+                width: MediaQuery.sizeOf(context).width / 7,
+                height: MediaQuery.sizeOf(context).width / 7),
+            _ => SizedBox(
+                width: MediaQuery.sizeOf(context).width / 7,
+                height: MediaQuery.sizeOf(context).width / 7,
+                child: Padding(
+                  padding: const EdgeInsets.all(3.0),
+                  child: InkWell(
+                    onTap: () => showInfoDay(day),
+                    child: CircleAvatar(
+                      backgroundColor:
+                          Color(day.color ?? AppConstants.backgroundColor),
+                      child: Center(
+                        child: Text(
+                          day.day.toString(),
+                          style: TextStyle(
+                              color: index == 6 ? Colors.red : Colors.black),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          );
+              )
+          };
         });
   }
+
+  void showInfoDay(Day day) => debugPrint(day.toString());
 }
