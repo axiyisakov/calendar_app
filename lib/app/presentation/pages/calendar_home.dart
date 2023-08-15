@@ -25,7 +25,6 @@ class CalendarHomePage extends StatelessWidget {
                 MessageWidget("ERROR:$message"),
               LoadingState() => const LoadingWidget(),
               LoadedState(type: var type) => CalendarPage(
-                  type: type,
                   dateTime: dateTime,
                 )
             },

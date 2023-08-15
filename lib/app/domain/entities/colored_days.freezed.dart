@@ -23,6 +23,7 @@ mixin _$ColoredDays {
   @JsonKey(name: 'day')
   num get dayNumber => throw _privateConstructorUsedError;
   num get type => throw _privateConstructorUsedError;
+  int? get color => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $ColoredDaysCopyWith<$Res> {
           ColoredDays value, $Res Function(ColoredDays) then) =
       _$ColoredDaysCopyWithImpl<$Res, ColoredDays>;
   @useResult
-  $Res call({@JsonKey(name: 'day') num dayNumber, num type});
+  $Res call({@JsonKey(name: 'day') num dayNumber, num type, int? color});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$ColoredDaysCopyWithImpl<$Res, $Val extends ColoredDays>
   $Res call({
     Object? dayNumber = null,
     Object? type = null,
+    Object? color = freezed,
   }) {
     return _then(_value.copyWith(
       dayNumber: null == dayNumber
@@ -64,6 +66,10 @@ class _$ColoredDaysCopyWithImpl<$Res, $Val extends ColoredDays>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as num,
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -76,7 +82,7 @@ abstract class _$$_ColoredDaysCopyWith<$Res>
       __$$_ColoredDaysCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'day') num dayNumber, num type});
+  $Res call({@JsonKey(name: 'day') num dayNumber, num type, int? color});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$_ColoredDaysCopyWithImpl<$Res>
   $Res call({
     Object? dayNumber = null,
     Object? type = null,
+    Object? color = freezed,
   }) {
     return _then(_$_ColoredDays(
       dayNumber: null == dayNumber
@@ -102,6 +109,10 @@ class __$$_ColoredDaysCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as num,
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -110,7 +121,9 @@ class __$$_ColoredDaysCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ColoredDays implements _ColoredDays {
   const _$_ColoredDays(
-      {@JsonKey(name: 'day') required this.dayNumber, required this.type});
+      {@JsonKey(name: 'day') required this.dayNumber,
+      required this.type,
+      this.color});
 
   factory _$_ColoredDays.fromJson(Map<String, dynamic> json) =>
       _$$_ColoredDaysFromJson(json);
@@ -120,10 +133,12 @@ class _$_ColoredDays implements _ColoredDays {
   final num dayNumber;
   @override
   final num type;
+  @override
+  final int? color;
 
   @override
   String toString() {
-    return 'ColoredDays(dayNumber: $dayNumber, type: $type)';
+    return 'ColoredDays(dayNumber: $dayNumber, type: $type, color: $color)';
   }
 
   @override
@@ -133,12 +148,13 @@ class _$_ColoredDays implements _ColoredDays {
             other is _$_ColoredDays &&
             (identical(other.dayNumber, dayNumber) ||
                 other.dayNumber == dayNumber) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.color, color) || other.color == color));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, dayNumber, type);
+  int get hashCode => Object.hash(runtimeType, dayNumber, type, color);
 
   @JsonKey(ignore: true)
   @override
@@ -157,7 +173,8 @@ class _$_ColoredDays implements _ColoredDays {
 abstract class _ColoredDays implements ColoredDays {
   const factory _ColoredDays(
       {@JsonKey(name: 'day') required final num dayNumber,
-      required final num type}) = _$_ColoredDays;
+      required final num type,
+      final int? color}) = _$_ColoredDays;
 
   factory _ColoredDays.fromJson(Map<String, dynamic> json) =
       _$_ColoredDays.fromJson;
@@ -167,6 +184,8 @@ abstract class _ColoredDays implements ColoredDays {
   num get dayNumber;
   @override
   num get type;
+  @override
+  int? get color;
   @override
   @JsonKey(ignore: true)
   _$$_ColoredDaysCopyWith<_$_ColoredDays> get copyWith =>

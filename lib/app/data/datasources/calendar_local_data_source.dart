@@ -4,13 +4,13 @@ import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
 import 'package:calendar_app/core/error/exception.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+abstract final class _KeysOfStorage {
+  static const cachedEnumKey = "SAVED_CALENDAR_ENUM";
+}
+
 abstract interface class CalendarLocalDataSource {
   Future<List<DayColorTypeModel>> getSavedColorTypes();
   Future<void> saveDayColors(List<DayColorTypeModel> dayColorEnumsToCache);
-}
-
-abstract final class _KeysOfStorage {
-  static const cachedEnumKey = "SAVED_CALENDAR_ENUM";
 }
 
 class CalendarLocalDataSourceImpl implements CalendarLocalDataSource {

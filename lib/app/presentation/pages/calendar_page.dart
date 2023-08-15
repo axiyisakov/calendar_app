@@ -1,20 +1,18 @@
 import 'package:calendar_app/app/domain/entities/day.dart';
-import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
 import 'package:calendar_app/app/presentation/bloc/calendar/holiday/bloc/holiday_bloc.dart';
 import 'package:calendar_app/app/presentation/listener/date_time_value_notifier.dart';
 import 'package:calendar_app/app/presentation/widgets/loading_widget.dart';
 import 'package:calendar_app/app/presentation/widgets/message_widget.dart';
+import 'package:calendar_app/core/util/consts.dart';
 import 'package:calendar_app/injection_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CalendarPage extends StatefulWidget {
-  final List<DayColorTypeModel> type;
   final DateTime dateTime;
   const CalendarPage({
     super.key,
-    required this.type,
     required this.dateTime,
   });
 
@@ -113,7 +111,10 @@ class _CalendarHeaderWidget extends StatelessWidget {
         Text('Thu'),
         Text('Fri'),
         Text('Sat'),
-        Text('Sun')
+        Text(
+          'Sun',
+          style: TextStyle(color: Colors.red),
+        )
       ],
     );
   }
@@ -155,14 +156,22 @@ class _CalendarBodyItemWidget extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           final date = dayList[index];
-          return Container(
+          return SizedBox(
             width: MediaQuery.sizeOf(context).width / 7,
             height: MediaQuery.sizeOf(context).width / 7,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-            ),
-            child: Center(
-              child: Text(date.day.toString()),
+            child: Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: CircleAvatar(
+                backgroundColor:
+                    Color(date.color ?? AppConstants.backgroundColor),
+                child: Center(
+                  child: Text(
+                    switch (date.day) { 0 => '', _ => date.day.toString() },
+                    style: TextStyle(
+                        color: index == 6 ? Colors.red : Colors.black),
+                  ),
+                ),
+              ),
             ),
           );
         });

@@ -1,18 +1,73 @@
+import 'package:calendar_app/app/domain/entities/colored_days.dart';
+import 'package:calendar_app/app/domain/entities/colored_days_base.dart';
 import 'package:calendar_app/app/domain/entities/day.dart';
+import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
 import 'package:calendar_app/core/error/failures.dart';
+import 'package:calendar_app/core/util/consts.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 
 class DateTimeToWeekListConverter {
-  Either<Failure, List<List<Day>>> dateTimeToDay(DateTime dateTime) {
+  Either<Failure, List<List<Day>>> dateTimeToDay(
+      {required DateTime dateTime,
+      required ColoredDaysBase coloredDaysBase,
+      required List<DayColorTypeModel> colorEnumList}) {
     try {
       var list = weeks(month: dateTime.month, year: dateTime.year);
+      var filteredWeeks = _filterWeeks(
+          weekList: list,
+          coloredDaysBase: coloredDaysBase,
+          colorEnumList: colorEnumList);
+
       if (list.isNotEmpty) {
-        return Right(list);
+        return Right(filteredWeeks);
       }
       return Left(DateTimeToWeekListFailure());
     } on FormatException {
       return Left(DateTimeToWeekListFailure());
     }
+  }
+
+  List<List<Day>> _filterWeeks(
+      {required List<List<Day>> weekList,
+      required ColoredDaysBase coloredDaysBase,
+      required List<DayColorTypeModel> colorEnumList}) {
+    var filteredWeeks = weekList;
+    var filteredDays = List<ColoredDays>.empty(growable: true);
+    var filteredColoredDays = coloredDaysBase.days;
+    var newFilteredWeeks = List<List<Day>>.empty(growable: true);
+    if (filteredColoredDays.isNotEmpty) {
+      for (var day in coloredDaysBase.days) {
+        var color = AppConstants.backgroundColor;
+        for (var colorsEnum in colorEnumList) {
+          if (colorsEnum.type == day.type) {
+            color = colorsEnum.color.toColor();
+          }
+        }
+        filteredDays.add(day.copyWith(color: color));
+      }
+      debugPrint('FILTERED:$filteredDays');
+    }
+
+    for (var week in filteredWeeks) {
+      var filteredWeek = List<Day>.empty(growable: true);
+      for (var day in week) {
+        var color = AppConstants.backgroundColor;
+        for (var filtered in filteredDays) {
+          if (filtered.dayNumber.toInt() == day.day) {
+            color = filtered.color!;
+          }
+        }
+        filteredWeek.add(day.copyWith(color: color));
+      }
+      newFilteredWeeks.add(filteredWeek);
+    }
+    debugPrint(newFilteredWeeks.toString());
+    if (newFilteredWeeks.isNotEmpty) {
+      return newFilteredWeeks;
+    }
+    return filteredWeeks;
   }
 
   int _lastDate({int? month}) {

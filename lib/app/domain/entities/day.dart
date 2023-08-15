@@ -41,6 +41,18 @@ class Day implements DayAbstract {
           year: DateTime.now().year,
         );
 
+  Day copyWith(
+      {int? day, int? weekday, int? month, int? year, int? color, int? type}) {
+    return Day(
+      day: day ?? this.day,
+      weekday: weekday ?? this.weekday,
+      month: month ?? this.month,
+      year: year ?? this.year,
+      color: color ?? this.color,
+      type: type ?? this.type,
+    );
+  }
+
   @override
   String toString() {
     return '''
