@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           valueListenable: sl<DateTimeValueNotifier>(),
           builder: (context, dateTime, _) {
             return CalendarView(
-              date: dateTime,
+              dateTime: dateTime,
             );
           }),
     );

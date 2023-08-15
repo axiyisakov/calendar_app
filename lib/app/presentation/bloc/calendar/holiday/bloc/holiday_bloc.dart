@@ -24,25 +24,49 @@ class HolidayBloc extends Bloc<HolidayEvent, HolidayState> {
 
   void onHolidayEvent(event, emit) async {
     if (event is GetHolidaysEvent) {
-      emit(const Loading());
-      try {
-        //event.date ni paramsga beramiz
-        var params = const Params('92TT');
-        final dayEnum = await holidays(params);
-        HolidayState state =
-            dayEnum.fold<HolidayState>((fail) => Error("fail:$fail"), (date) {
-          var weekList = _convert(date);
-          return HolidayState.loaded(weekList);
-        });
-        emit(state);
-      } catch (e) {
-        emit(Error(e.toString()));
-      }
+      await _onLoad(event, emit);
+    } else if (event is GetRefreshHolidaysEvent) {
+      await _onRefresh(event, emit);
     }
   }
 
-  List<List<Day>> _convert(ColoredDaysBase date) {
-    DateTime date1 = DateTime(date.year.toInt(), int.parse(date.month));
+  Future<void> _onLoad(GetHolidaysEvent event, emit) async {
+    emit(const Loading());
+    try {
+      //event.date ni paramsga beramiz
+      var params = const Params('92TT');
+      final dayEnum = await holidays(params);
+      HolidayState state =
+          dayEnum.fold<HolidayState>((fail) => Error("fail:$fail"), (date) {
+        var weekList = _convert(date: date, dateTime: event.date);
+        return HolidayState.loaded(weekList);
+      });
+      emit(state);
+    } catch (e) {
+      emit(Error(e.toString()));
+    }
+  }
+
+  Future<void> _onRefresh(GetRefreshHolidaysEvent event, emit) async {
+    emit(const Loading());
+    try {
+      //event.date ni paramsga beramiz
+      var params = const Params('92TT');
+      final dayEnum = await holidays(params);
+      HolidayState state =
+          dayEnum.fold<HolidayState>((fail) => Error("fail:$fail"), (date) {
+        var weekList = _convert(date: date, dateTime: event.date);
+        return HolidayState.loaded(weekList);
+      });
+      emit(state);
+    } catch (e) {
+      emit(Error(e.toString()));
+    }
+  }
+
+  List<List<Day>> _convert(
+      {required ColoredDaysBase date, required DateTime dateTime}) {
+    DateTime date1 = dateTime;
     var weekList =
         weekListConverter.dateTimeToDay(date1).fold<List<List<Day>>>((fail) {
       return List.empty();

@@ -20,18 +20,21 @@ mixin _$HolidayEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DateTime date) getHolidaysEvent,
+    required TResult Function(DateTime date) getRefreshEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DateTime date)? getHolidaysEvent,
+    TResult? Function(DateTime date)? getRefreshEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DateTime date)? getHolidaysEvent,
+    TResult Function(DateTime date)? getRefreshEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$HolidayEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetHolidaysEvent value) getHolidaysEvent,
+    required TResult Function(GetRefreshHolidaysEvent value) getRefreshEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(GetHolidaysEvent value)? getHolidaysEvent,
+    TResult? Function(GetRefreshHolidaysEvent value)? getRefreshEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetHolidaysEvent value)? getHolidaysEvent,
+    TResult Function(GetRefreshHolidaysEvent value)? getRefreshEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DateTime date) getHolidaysEvent,
+    required TResult Function(DateTime date) getRefreshEvent,
   }) {
     return started();
   }
@@ -122,6 +129,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DateTime date)? getHolidaysEvent,
+    TResult? Function(DateTime date)? getRefreshEvent,
   }) {
     return started?.call();
   }
@@ -131,6 +139,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DateTime date)? getHolidaysEvent,
+    TResult Function(DateTime date)? getRefreshEvent,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,6 +153,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetHolidaysEvent value) getHolidaysEvent,
+    required TResult Function(GetRefreshHolidaysEvent value) getRefreshEvent,
   }) {
     return started(this);
   }
@@ -153,6 +163,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(GetHolidaysEvent value)? getHolidaysEvent,
+    TResult? Function(GetRefreshHolidaysEvent value)? getRefreshEvent,
   }) {
     return started?.call(this);
   }
@@ -162,6 +173,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetHolidaysEvent value)? getHolidaysEvent,
+    TResult Function(GetRefreshHolidaysEvent value)? getRefreshEvent,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -241,6 +253,7 @@ class _$GetHolidaysEvent implements GetHolidaysEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DateTime date) getHolidaysEvent,
+    required TResult Function(DateTime date) getRefreshEvent,
   }) {
     return getHolidaysEvent(date);
   }
@@ -250,6 +263,7 @@ class _$GetHolidaysEvent implements GetHolidaysEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DateTime date)? getHolidaysEvent,
+    TResult? Function(DateTime date)? getRefreshEvent,
   }) {
     return getHolidaysEvent?.call(date);
   }
@@ -259,6 +273,7 @@ class _$GetHolidaysEvent implements GetHolidaysEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DateTime date)? getHolidaysEvent,
+    TResult Function(DateTime date)? getRefreshEvent,
     required TResult orElse(),
   }) {
     if (getHolidaysEvent != null) {
@@ -272,6 +287,7 @@ class _$GetHolidaysEvent implements GetHolidaysEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetHolidaysEvent value) getHolidaysEvent,
+    required TResult Function(GetRefreshHolidaysEvent value) getRefreshEvent,
   }) {
     return getHolidaysEvent(this);
   }
@@ -281,6 +297,7 @@ class _$GetHolidaysEvent implements GetHolidaysEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(GetHolidaysEvent value)? getHolidaysEvent,
+    TResult? Function(GetRefreshHolidaysEvent value)? getRefreshEvent,
   }) {
     return getHolidaysEvent?.call(this);
   }
@@ -290,6 +307,7 @@ class _$GetHolidaysEvent implements GetHolidaysEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetHolidaysEvent value)? getHolidaysEvent,
+    TResult Function(GetRefreshHolidaysEvent value)? getRefreshEvent,
     required TResult orElse(),
   }) {
     if (getHolidaysEvent != null) {
@@ -305,6 +323,147 @@ abstract class GetHolidaysEvent implements HolidayEvent {
   DateTime get date;
   @JsonKey(ignore: true)
   _$$GetHolidaysEventCopyWith<_$GetHolidaysEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetRefreshHolidaysEventCopyWith<$Res> {
+  factory _$$GetRefreshHolidaysEventCopyWith(_$GetRefreshHolidaysEvent value,
+          $Res Function(_$GetRefreshHolidaysEvent) then) =
+      __$$GetRefreshHolidaysEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime date});
+}
+
+/// @nodoc
+class __$$GetRefreshHolidaysEventCopyWithImpl<$Res>
+    extends _$HolidayEventCopyWithImpl<$Res, _$GetRefreshHolidaysEvent>
+    implements _$$GetRefreshHolidaysEventCopyWith<$Res> {
+  __$$GetRefreshHolidaysEventCopyWithImpl(_$GetRefreshHolidaysEvent _value,
+      $Res Function(_$GetRefreshHolidaysEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+  }) {
+    return _then(_$GetRefreshHolidaysEvent(
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetRefreshHolidaysEvent implements GetRefreshHolidaysEvent {
+  const _$GetRefreshHolidaysEvent(this.date);
+
+  @override
+  final DateTime date;
+
+  @override
+  String toString() {
+    return 'HolidayEvent.getRefreshEvent(date: $date)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetRefreshHolidaysEvent &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, date);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetRefreshHolidaysEventCopyWith<_$GetRefreshHolidaysEvent> get copyWith =>
+      __$$GetRefreshHolidaysEventCopyWithImpl<_$GetRefreshHolidaysEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(DateTime date) getHolidaysEvent,
+    required TResult Function(DateTime date) getRefreshEvent,
+  }) {
+    return getRefreshEvent(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(DateTime date)? getHolidaysEvent,
+    TResult? Function(DateTime date)? getRefreshEvent,
+  }) {
+    return getRefreshEvent?.call(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(DateTime date)? getHolidaysEvent,
+    TResult Function(DateTime date)? getRefreshEvent,
+    required TResult orElse(),
+  }) {
+    if (getRefreshEvent != null) {
+      return getRefreshEvent(date);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(GetHolidaysEvent value) getHolidaysEvent,
+    required TResult Function(GetRefreshHolidaysEvent value) getRefreshEvent,
+  }) {
+    return getRefreshEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(GetHolidaysEvent value)? getHolidaysEvent,
+    TResult? Function(GetRefreshHolidaysEvent value)? getRefreshEvent,
+  }) {
+    return getRefreshEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetHolidaysEvent value)? getHolidaysEvent,
+    TResult Function(GetRefreshHolidaysEvent value)? getRefreshEvent,
+    required TResult orElse(),
+  }) {
+    if (getRefreshEvent != null) {
+      return getRefreshEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetRefreshHolidaysEvent implements HolidayEvent {
+  const factory GetRefreshHolidaysEvent(final DateTime date) =
+      _$GetRefreshHolidaysEvent;
+
+  DateTime get date;
+  @JsonKey(ignore: true)
+  _$$GetRefreshHolidaysEventCopyWith<_$GetRefreshHolidaysEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

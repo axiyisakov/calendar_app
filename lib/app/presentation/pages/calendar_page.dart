@@ -1,15 +1,22 @@
 import 'package:calendar_app/app/domain/entities/day.dart';
 import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
 import 'package:calendar_app/app/presentation/bloc/calendar/holiday/bloc/holiday_bloc.dart';
+import 'package:calendar_app/app/presentation/listener/date_time_value_notifier.dart';
 import 'package:calendar_app/app/presentation/widgets/loading_widget.dart';
 import 'package:calendar_app/app/presentation/widgets/message_widget.dart';
+import 'package:calendar_app/injection_container.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CalendarPage extends StatefulWidget {
   final List<DayColorTypeModel> type;
-  final DateTime date;
-  const CalendarPage({super.key, required this.type, required this.date});
+  final DateTime dateTime;
+  const CalendarPage({
+    super.key,
+    required this.type,
+    required this.dateTime,
+  });
 
   @override
   State<CalendarPage> createState() => _CalendarPageState();
@@ -18,8 +25,8 @@ class CalendarPage extends StatefulWidget {
 class _CalendarPageState extends State<CalendarPage> {
   @override
   void initState() {
-    Future.microtask(
-        () => context.read<HolidayBloc>().add(GetHolidaysEvent(widget.date)));
+    Future.microtask(() =>
+        context.read<HolidayBloc>().add(GetHolidaysEvent(widget.dateTime)));
     super.initState();
   }
 
@@ -29,7 +36,43 @@ class _CalendarPageState extends State<CalendarPage> {
     return Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                isDismissible: false,
+                builder: (_) => SizedBox(
+                      height: MediaQuery.sizeOf(context).height * .4,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: CupertinoDatePicker(
+                                initialDateTime:
+                                    sl<DateTimeValueNotifier>().value,
+                                mode: CupertinoDatePickerMode.date,
+                                onDateTimeChanged: (dateTime) {
+                                  sl<DateTimeValueNotifier>()
+                                      .setDateTime(dateTime);
+                                }),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: CupertinoButton.filled(
+                                onPressed: () {
+                                  BlocProvider.of<HolidayBloc>(context).add(
+                                      GetRefreshHolidaysEvent(widget.dateTime));
+                                  debugPrint('SELECTEDDDDD');
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Select')),
+                          ),
+                          const Spacer(
+                            flex: 1,
+                          )
+                        ],
+                      ),
+                    ));
+          },
           label: const Text('Select month'),
         ),
         body: Padding(
@@ -50,11 +93,6 @@ class _CalendarPageState extends State<CalendarPage> {
                     Expanded(child: _CalendarBodyWidget(weeks: weeks))
                 },
               ),
-              // Expanded(
-              //   child: _CalendarBodyWidget(
-              //     weeks: month.weekList,
-              //   ),
-              // )
             ],
           ),
         ));
