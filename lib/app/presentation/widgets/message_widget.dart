@@ -12,7 +12,10 @@ class MessageWidget extends StatelessWidget {
       children: [
         Text(
           message,
-          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 20,
+          ),
         ),
         Text(
           subtitle ?? '',

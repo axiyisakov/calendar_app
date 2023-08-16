@@ -56,7 +56,8 @@ class Day implements DayAbstract {
   @override
   String toString() {
     return '''
-Day($day-$month-$year)
+Day($day-$month-$year   type: $type)
+
 ''';
   }
 }

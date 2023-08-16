@@ -5,8 +5,6 @@ import 'package:calendar_app/app/domain/entities/remote_days_base.dart';
 import 'package:calendar_app/core/error/failures.dart';
 import 'package:calendar_app/core/util/consts.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 
 class DateTimeToWeekListConverter {
   Either<Failure, List<List<Day>>> dateTimeToDay(
@@ -47,23 +45,25 @@ class DateTimeToWeekListConverter {
         }
         filteredDays.add(day.copyWith(color: color));
       }
-      debugPrint('FILTERED:$filteredDays');
+      // debugPrint('FILTERED:$filteredDays');
     }
 
     for (var week in filteredWeeks) {
       var filteredWeek = List<Day>.empty(growable: true);
       for (var day in week) {
         var color = AppConstants.backgroundColor;
+        var type = 0;
         for (var filtered in filteredDays) {
           if (filtered.dayNumber.toInt() == day.day) {
             color = filtered.color!;
+            type = filtered.type.toInt();
           }
         }
-        filteredWeek.add(day.copyWith(color: color));
+        filteredWeek.add(day.copyWith(color: color, type: type));
       }
       newFilteredWeeks.add(filteredWeek);
     }
-    debugPrint(newFilteredWeeks.toString());
+    // debugPrint(newFilteredWeeks.toString());
     if (newFilteredWeeks.isNotEmpty) {
       return newFilteredWeeks;
     }
