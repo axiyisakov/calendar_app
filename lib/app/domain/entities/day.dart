@@ -69,11 +69,15 @@ class DateTileData extends Day {
       required int weekDayNumber,
       required int monthNumber,
       required int yearNumber,
-      required int weekIndex})
+      required int weekIndex,
+      int? color,
+      int? type})
       : super.withWeekIndex(
             day: dayNumber,
             weekday: weekDayNumber,
             month: monthNumber,
             year: yearNumber,
-            weekIndex: weekIndex);
+            weekIndex: weekIndex,
+            color: color,
+            type: type);
 }

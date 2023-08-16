@@ -1,7 +1,7 @@
 import 'package:calendar_app/app/domain/entities/colored_days.dart';
-import 'package:calendar_app/app/domain/entities/colored_days_base.dart';
 import 'package:calendar_app/app/domain/entities/day.dart';
 import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
+import 'package:calendar_app/app/domain/entities/remote_days_base.dart';
 import 'package:calendar_app/core/error/failures.dart';
 import 'package:calendar_app/core/util/consts.dart';
 import 'package:dartz/dartz.dart';
@@ -11,7 +11,7 @@ import 'package:flutter/foundation.dart';
 class DateTimeToWeekListConverter {
   Either<Failure, List<List<Day>>> dateTimeToDay(
       {required DateTime dateTime,
-      required ColoredDaysBase coloredDaysBase,
+      required RemoteDaysBase coloredDaysBase,
       required List<DayColorTypeModel> colorEnumList}) {
     try {
       var list = weeks(month: dateTime.month, year: dateTime.year);
@@ -31,7 +31,7 @@ class DateTimeToWeekListConverter {
 
   List<List<Day>> _filterWeeks(
       {required List<List<Day>> weekList,
-      required ColoredDaysBase coloredDaysBase,
+      required RemoteDaysBase coloredDaysBase,
       required List<DayColorTypeModel> colorEnumList}) {
     var filteredWeeks = weekList;
     var filteredDays = List<ColoredDays>.empty(growable: true);

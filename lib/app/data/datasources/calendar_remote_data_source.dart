@@ -1,5 +1,5 @@
-import 'package:calendar_app/app/domain/entities/colored_days_base.dart';
 import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
+import 'package:calendar_app/app/domain/entities/remote_days_base.dart';
 import 'package:calendar_app/core/error/exception.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,7 +10,7 @@ abstract interface class CalendarRemoteDataSource {
 }
 
 abstract interface class CalendarHolidayRemoteDataSource {
-  Future<ColoredDaysBase> getHolidays(String month);
+  Future<RemoteDaysBase> getHolidays(String month);
 }
 
 class CalendarRemoteDataSourceImpl
@@ -37,13 +37,13 @@ class CalendarRemoteDataSourceImpl
     }
   }
 
-  Future<ColoredDaysBase> _getHolidaysFromUrl(String url) async {
+  Future<RemoteDaysBase> _getHolidaysFromUrl(String url) async {
     final responseData = await dio.getUri<Map<String, dynamic>>(
       Uri.parse(url),
     );
 
     if (responseData.statusCode == 200) {
-      return ColoredDaysBase.fromJson(responseData.data!);
+      return RemoteDaysBase.fromJson(responseData.data!);
     } else {
       throw ServerException();
     }
@@ -54,7 +54,7 @@ class CalendarRemoteDataSourceImpl
       await _getDayColorFromUrl("https://jsonkeeper.com/$version/I86U");
 
   @override
-  Future<ColoredDaysBase> getHolidays(String month) async =>
+  Future<RemoteDaysBase> getHolidays(String month) async =>
       await _getHolidaysFromUrl('https://jsonkeeper.com/$version/$month');
 
   String version = 'b';

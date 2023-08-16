@@ -1,5 +1,5 @@
 import 'package:calendar_app/app/data/datasources/calendar_remote_data_source.dart';
-import 'package:calendar_app/app/domain/entities/colored_days_base.dart';
+import 'package:calendar_app/app/domain/entities/remote_days_base.dart';
 import 'package:calendar_app/app/domain/repositories/calendar_holiday_repository.dart';
 import 'package:calendar_app/core/error/exception.dart';
 import 'package:calendar_app/core/error/failures.dart';
@@ -12,12 +12,12 @@ class CalendarHolidayRepositoryImpl extends CalendarHolidayRepository {
   CalendarHolidayRepositoryImpl(
       {required this.remoteData, required this.network});
 
-  Future<Either<Failure, ColoredDaysBase>> _getColoredDays(
+  Future<Either<Failure, RemoteDaysBase>> _getColoredDays(
       Function function) async {
     if (await network.isConnected) {
       try {
         final remote = await function();
-        return Right<Failure, ColoredDaysBase>(remote);
+        return Right<Failure, RemoteDaysBase>(remote);
       } on ServerException {
         return Left(ServerFailure());
       }
@@ -27,7 +27,7 @@ class CalendarHolidayRepositoryImpl extends CalendarHolidayRepository {
   }
 
   @override
-  Future<Either<Failure, ColoredDaysBase>> getHolidays(String month) async {
+  Future<Either<Failure, RemoteDaysBase>> getHolidays(String month) async {
     return await _getColoredDays(() async {
       return await remoteData.getHolidays(month);
     });
