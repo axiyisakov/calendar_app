@@ -70,10 +70,12 @@ class DateTimeToWeekListConverter {
     return filteredWeeks;
   }
 
-  int _lastDate({int? month}) {
+  int _lastDate({int? month, required int year}) {
     switch (month ?? month) {
       case 1:
         return 31;
+      case 2 when (year % 4 == 0 && year % 100 != 0) || year % 400 == 0:
+        return 29;
       case 2:
         return 28;
       case 3:
@@ -110,7 +112,7 @@ class DateTimeToWeekListConverter {
         days0.insert(0, day);
       }
     }
-    final int tmLastDate = _lastDate(month: month);
+    final int tmLastDate = _lastDate(month: month, year: year);
     final int tmLastDay = DateTime.utc(year, month, tmLastDate).weekday;
     for (int i = 1; i < tmLastDate + 1; i++) {
       var day = Day(day: i, month: month, year: year, weekday: i);
