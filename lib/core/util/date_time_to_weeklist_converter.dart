@@ -104,7 +104,7 @@ class DateTimeToWeekListConverter {
   List<Day> _days({required int month, required int year}) {
     List<Day> days0 = [];
     final int firstDay = DateTime.utc(year, month, 1).weekday;
-    if (firstDay != 7) {
+    if (firstDay != 1) {
       for (int i = 1; i < firstDay; i++) {
         var day = Day(day: 0, month: month, year: year, weekday: i);
         days0.insert(0, day);
