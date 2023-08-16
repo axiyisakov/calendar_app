@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'day_color_type_model.dart';
+part of 'day_color_type.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DayColorTypeModel _$DayColorTypeModelFromJson(Map<String, dynamic> json) {
-  return _DayColorTypeModel.fromJson(json);
+DayColorType _$DayColorTypeFromJson(Map<String, dynamic> json) {
+  return _DayColorType.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DayColorTypeModel {
+mixin _$DayColorType {
   int get type => throw _privateConstructorUsedError;
   String get color => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DayColorTypeModelCopyWith<DayColorTypeModel> get copyWith =>
+  $DayColorTypeCopyWith<DayColorType> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DayColorTypeModelCopyWith<$Res> {
-  factory $DayColorTypeModelCopyWith(
-          DayColorTypeModel value, $Res Function(DayColorTypeModel) then) =
-      _$DayColorTypeModelCopyWithImpl<$Res, DayColorTypeModel>;
+abstract class $DayColorTypeCopyWith<$Res> {
+  factory $DayColorTypeCopyWith(
+          DayColorType value, $Res Function(DayColorType) then) =
+      _$DayColorTypeCopyWithImpl<$Res, DayColorType>;
   @useResult
   $Res call({int type, String color});
 }
 
 /// @nodoc
-class _$DayColorTypeModelCopyWithImpl<$Res, $Val extends DayColorTypeModel>
-    implements $DayColorTypeModelCopyWith<$Res> {
-  _$DayColorTypeModelCopyWithImpl(this._value, this._then);
+class _$DayColorTypeCopyWithImpl<$Res, $Val extends DayColorType>
+    implements $DayColorTypeCopyWith<$Res> {
+  _$DayColorTypeCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,22 +68,22 @@ class _$DayColorTypeModelCopyWithImpl<$Res, $Val extends DayColorTypeModel>
 }
 
 /// @nodoc
-abstract class _$$_DayColorTypeModelCopyWith<$Res>
-    implements $DayColorTypeModelCopyWith<$Res> {
-  factory _$$_DayColorTypeModelCopyWith(_$_DayColorTypeModel value,
-          $Res Function(_$_DayColorTypeModel) then) =
-      __$$_DayColorTypeModelCopyWithImpl<$Res>;
+abstract class _$$_DayColorTypeCopyWith<$Res>
+    implements $DayColorTypeCopyWith<$Res> {
+  factory _$$_DayColorTypeCopyWith(
+          _$_DayColorType value, $Res Function(_$_DayColorType) then) =
+      __$$_DayColorTypeCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int type, String color});
 }
 
 /// @nodoc
-class __$$_DayColorTypeModelCopyWithImpl<$Res>
-    extends _$DayColorTypeModelCopyWithImpl<$Res, _$_DayColorTypeModel>
-    implements _$$_DayColorTypeModelCopyWith<$Res> {
-  __$$_DayColorTypeModelCopyWithImpl(
-      _$_DayColorTypeModel _value, $Res Function(_$_DayColorTypeModel) _then)
+class __$$_DayColorTypeCopyWithImpl<$Res>
+    extends _$DayColorTypeCopyWithImpl<$Res, _$_DayColorType>
+    implements _$$_DayColorTypeCopyWith<$Res> {
+  __$$_DayColorTypeCopyWithImpl(
+      _$_DayColorType _value, $Res Function(_$_DayColorType) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_DayColorTypeModelCopyWithImpl<$Res>
     Object? type = null,
     Object? color = null,
   }) {
-    return _then(_$_DayColorTypeModel(
+    return _then(_$_DayColorType(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_DayColorTypeModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DayColorTypeModel implements _DayColorTypeModel {
-  const _$_DayColorTypeModel({required this.type, required this.color});
+class _$_DayColorType implements _DayColorType {
+  const _$_DayColorType({required this.type, required this.color});
 
-  factory _$_DayColorTypeModel.fromJson(Map<String, dynamic> json) =>
-      _$$_DayColorTypeModelFromJson(json);
+  factory _$_DayColorType.fromJson(Map<String, dynamic> json) =>
+      _$$_DayColorTypeFromJson(json);
 
   @override
   final int type;
@@ -120,14 +120,14 @@ class _$_DayColorTypeModel implements _DayColorTypeModel {
 
   @override
   String toString() {
-    return 'DayColorTypeModel(type: $type, color: $color)';
+    return 'DayColorType(type: $type, color: $color)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DayColorTypeModel &&
+            other is _$_DayColorType &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.color, color) || other.color == color));
   }
@@ -139,25 +139,23 @@ class _$_DayColorTypeModel implements _DayColorTypeModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DayColorTypeModelCopyWith<_$_DayColorTypeModel> get copyWith =>
-      __$$_DayColorTypeModelCopyWithImpl<_$_DayColorTypeModel>(
-          this, _$identity);
+  _$$_DayColorTypeCopyWith<_$_DayColorType> get copyWith =>
+      __$$_DayColorTypeCopyWithImpl<_$_DayColorType>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DayColorTypeModelToJson(
+    return _$$_DayColorTypeToJson(
       this,
     );
   }
 }
 
-abstract class _DayColorTypeModel implements DayColorTypeModel {
-  const factory _DayColorTypeModel(
-      {required final int type,
-      required final String color}) = _$_DayColorTypeModel;
+abstract class _DayColorType implements DayColorType {
+  const factory _DayColorType(
+      {required final int type, required final String color}) = _$_DayColorType;
 
-  factory _DayColorTypeModel.fromJson(Map<String, dynamic> json) =
-      _$_DayColorTypeModel.fromJson;
+  factory _DayColorType.fromJson(Map<String, dynamic> json) =
+      _$_DayColorType.fromJson;
 
   @override
   int get type;
@@ -165,6 +163,6 @@ abstract class _DayColorTypeModel implements DayColorTypeModel {
   String get color;
   @override
   @JsonKey(ignore: true)
-  _$$_DayColorTypeModelCopyWith<_$_DayColorTypeModel> get copyWith =>
+  _$$_DayColorTypeCopyWith<_$_DayColorType> get copyWith =>
       throw _privateConstructorUsedError;
 }

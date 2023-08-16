@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
+import 'package:calendar_app/app/domain/entities/day_color_type.dart';
 import 'package:calendar_app/app/domain/usecases/get_day_color_types.dart';
 import 'package:calendar_app/core/util/color_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
