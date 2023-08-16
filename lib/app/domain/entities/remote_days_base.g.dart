@@ -11,7 +11,7 @@ _$_RemoteDaysBase _$$_RemoteDaysBaseFromJson(Map<String, dynamic> json) =>
       month: json['month'] as String,
       year: json['year'] as num,
       days: (json['days'] as List<dynamic>)
-          .map((e) => ColoredDays.fromJson(e as Map<String, dynamic>))
+          .map((e) => RemoteDay.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

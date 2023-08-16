@@ -22,7 +22,7 @@ RemoteDaysBase _$RemoteDaysBaseFromJson(Map<String, dynamic> json) {
 mixin _$RemoteDaysBase {
   String get month => throw _privateConstructorUsedError;
   num get year => throw _privateConstructorUsedError;
-  List<ColoredDays> get days => throw _privateConstructorUsedError;
+  List<RemoteDay> get days => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $RemoteDaysBaseCopyWith<$Res> {
           RemoteDaysBase value, $Res Function(RemoteDaysBase) then) =
       _$RemoteDaysBaseCopyWithImpl<$Res, RemoteDaysBase>;
   @useResult
-  $Res call({String month, num year, List<ColoredDays> days});
+  $Res call({String month, num year, List<RemoteDay> days});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$RemoteDaysBaseCopyWithImpl<$Res, $Val extends RemoteDaysBase>
       days: null == days
           ? _value.days
           : days // ignore: cast_nullable_to_non_nullable
-              as List<ColoredDays>,
+              as List<RemoteDay>,
     ) as $Val);
   }
 }
@@ -81,7 +81,7 @@ abstract class _$$_RemoteDaysBaseCopyWith<$Res>
       __$$_RemoteDaysBaseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String month, num year, List<ColoredDays> days});
+  $Res call({String month, num year, List<RemoteDay> days});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$_RemoteDaysBaseCopyWithImpl<$Res>
       days: null == days
           ? _value._days
           : days // ignore: cast_nullable_to_non_nullable
-              as List<ColoredDays>,
+              as List<RemoteDay>,
     ));
   }
 }
@@ -122,7 +122,7 @@ class _$_RemoteDaysBase implements _RemoteDaysBase {
   const _$_RemoteDaysBase(
       {required this.month,
       required this.year,
-      required final List<ColoredDays> days})
+      required final List<RemoteDay> days})
       : _days = days;
 
   factory _$_RemoteDaysBase.fromJson(Map<String, dynamic> json) =>
@@ -132,9 +132,9 @@ class _$_RemoteDaysBase implements _RemoteDaysBase {
   final String month;
   @override
   final num year;
-  final List<ColoredDays> _days;
+  final List<RemoteDay> _days;
   @override
-  List<ColoredDays> get days {
+  List<RemoteDay> get days {
     if (_days is EqualUnmodifiableListView) return _days;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_days);
@@ -178,7 +178,7 @@ abstract class _RemoteDaysBase implements RemoteDaysBase {
   const factory _RemoteDaysBase(
       {required final String month,
       required final num year,
-      required final List<ColoredDays> days}) = _$_RemoteDaysBase;
+      required final List<RemoteDay> days}) = _$_RemoteDaysBase;
 
   factory _RemoteDaysBase.fromJson(Map<String, dynamic> json) =
       _$_RemoteDaysBase.fromJson;
@@ -188,7 +188,7 @@ abstract class _RemoteDaysBase implements RemoteDaysBase {
   @override
   num get year;
   @override
-  List<ColoredDays> get days;
+  List<RemoteDay> get days;
   @override
   @JsonKey(ignore: true)
   _$$_RemoteDaysBaseCopyWith<_$_RemoteDaysBase> get copyWith =>

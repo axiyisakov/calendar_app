@@ -1,6 +1,6 @@
-import 'package:calendar_app/app/domain/entities/colored_days.dart';
 import 'package:calendar_app/app/domain/entities/day.dart';
 import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
+import 'package:calendar_app/app/domain/entities/remote_day.dart';
 import 'package:calendar_app/app/domain/entities/remote_days_base.dart';
 import 'package:calendar_app/core/error/failures.dart';
 import 'package:calendar_app/core/util/consts.dart';
@@ -34,7 +34,7 @@ class DateTimeToWeekListConverter {
       required RemoteDaysBase coloredDaysBase,
       required List<DayColorTypeModel> colorEnumList}) {
     var filteredWeeks = weekList;
-    var filteredDays = List<ColoredDays>.empty(growable: true);
+    var filteredDays = List<RemoteDay>.empty(growable: true);
     var filteredColoredDays = coloredDaysBase.days;
     var newFilteredWeeks = List<List<Day>>.empty(growable: true);
     if (filteredColoredDays.isNotEmpty) {

@@ -1,4 +1,4 @@
-import 'package:calendar_app/app/domain/entities/colored_days.dart';
+import 'package:calendar_app/app/domain/entities/remote_day.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'remote_days_base.freezed.dart';
@@ -9,7 +9,7 @@ class RemoteDaysBase with _$RemoteDaysBase {
   const factory RemoteDaysBase({
     required String month,
     required num year,
-    required List<ColoredDays> days,
+    required List<RemoteDay> days,
   }) = _RemoteDaysBase;
 
   factory RemoteDaysBase.fromJson(Map<String, Object?> json) =>
