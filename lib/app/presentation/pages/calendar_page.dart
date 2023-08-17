@@ -46,7 +46,7 @@ class _CalendarPageState extends State<CalendarPage> {
                             flex: 5,
                             child: CupertinoDatePicker(
                                 initialDateTime: widget.dateTime,
-                                mode: CupertinoDatePickerMode.date,
+                                mode: CupertinoDatePickerMode.monthYear,
                                 onDateTimeChanged: (dateTime) {
                                   sl<DateTimeValueNotifier>()
                                       .setDateTime(dateTime);
