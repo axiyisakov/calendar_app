@@ -45,9 +45,8 @@ class _CalendarPageState extends State<CalendarPage> {
                           Expanded(
                             flex: 5,
                             child: CupertinoDatePicker(
-                                initialDateTime:
-                                    sl<DateTimeValueNotifier>().value,
-                                mode: CupertinoDatePickerMode.date,
+                                initialDateTime: widget.dateTime,
+                                mode: CupertinoDatePickerMode.monthYear,
                                 onDateTimeChanged: (dateTime) {
                                   sl<DateTimeValueNotifier>()
                                       .setDateTime(dateTime);
@@ -102,21 +101,26 @@ class _CalendarHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text('Mon'),
-        Text('Tue'),
-        Text('Wed'),
-        Text('Thu'),
-        Text('Fri'),
-        Text('Sat'),
-        Text(
-          'Sun',
-          style: TextStyle(color: Colors.red),
-        )
-      ],
-    );
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const Text('Mon'),
+          const Text('Tue'),
+          const Text('Wed'),
+          const Text('Thu'),
+          const Text('Fri'),
+          const Text('Sat'),
+          const Text(
+            'Sun',
+            style: TextStyle(color: Colors.red),
+          )
+        ]
+            .map((e) => SizedBox(
+                  width: MediaQuery.sizeOf(context).width / 7,
+                  height: MediaQuery.sizeOf(context).width / 7,
+                  child: Center(child: e),
+                ))
+            .toList());
   }
 }
 
@@ -166,7 +170,10 @@ class _CalendarBodyItemWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: InkWell(
-                    onTap: () => showInfoDay(day),
+                    borderRadius: BorderRadius.circular(
+                        (MediaQuery.sizeOf(context).width / 7) / 2),
+                    onTap: () => _showInfoDay(day),
+                    onLongPress: () => _showInfoDay(day),
                     child: CircleAvatar(
                       backgroundColor:
                           Color(day.color ?? AppConstants.backgroundColor),
@@ -185,5 +192,5 @@ class _CalendarBodyItemWidget extends StatelessWidget {
         });
   }
 
-  void showInfoDay(Day day) => debugPrint(day.toString());
+  void _showInfoDay(Day day) => debugPrint(day.toString());
 }

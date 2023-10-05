@@ -1,20 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'day_color_type_model.dart';
+part of 'remote_day.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DayColorTypeModel _$$_DayColorTypeModelFromJson(Map<String, dynamic> json) =>
-    _$_DayColorTypeModel(
-      type: json['type'] as int,
-      color: json['color'] as String,
+_$_RemoteDay _$$_RemoteDayFromJson(Map<String, dynamic> json) => _$_RemoteDay(
+      dayNumber: json['day'] as num,
+      type: json['type'] as num,
+      color: json['color'] as int?,
     );
 
-Map<String, dynamic> _$$_DayColorTypeModelToJson(
-        _$_DayColorTypeModel instance) =>
+Map<String, dynamic> _$$_RemoteDayToJson(_$_RemoteDay instance) =>
     <String, dynamic>{
+      'day': instance.dayNumber,
       'type': instance.type,
       'color': instance.color,
     };

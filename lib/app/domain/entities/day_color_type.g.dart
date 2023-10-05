@@ -1,21 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'colored_days.dart';
+part of 'day_color_type.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ColoredDays _$$_ColoredDaysFromJson(Map<String, dynamic> json) =>
-    _$_ColoredDays(
-      dayNumber: json['day'] as num,
-      type: json['type'] as num,
-      color: json['color'] as int?,
+_$_DayColorType _$$_DayColorTypeFromJson(Map<String, dynamic> json) =>
+    _$_DayColorType(
+      type: json['type'] as int,
+      color: json['color'] as String,
     );
 
-Map<String, dynamic> _$$_ColoredDaysToJson(_$_ColoredDays instance) =>
+Map<String, dynamic> _$$_DayColorTypeToJson(_$_DayColorType instance) =>
     <String, dynamic>{
-      'day': instance.dayNumber,
       'type': instance.type,
       'color': instance.color,
     };

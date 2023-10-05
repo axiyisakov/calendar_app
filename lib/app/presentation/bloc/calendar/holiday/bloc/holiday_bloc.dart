@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:calendar_app/app/data/datasources/calendar_local_data_source.dart';
-import 'package:calendar_app/app/domain/entities/colored_days_base.dart';
 import 'package:calendar_app/app/domain/entities/day.dart';
-import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
+import 'package:calendar_app/app/domain/entities/day_color_type.dart';
+import 'package:calendar_app/app/domain/entities/remote_days_base.dart';
 import 'package:calendar_app/app/domain/usecases/get_holidays.dart';
 import 'package:calendar_app/core/util/color_converter.dart';
 import 'package:calendar_app/core/util/date_time_to_weekList_converter.dart';
@@ -73,8 +73,8 @@ class HolidayBloc extends Bloc<HolidayEvent, HolidayState> {
   }
 
   Future<List<List<Day>>> _convert(
-      {required ColoredDaysBase daysBase, required DateTime dateTime}) async {
-    final List<DayColorTypeModel> dayColorEnum =
+      {required RemoteDaysBase daysBase, required DateTime dateTime}) async {
+    final List<DayColorType> dayColorEnum =
         await calendarLocalDataSource.getSavedColorTypes();
     var weekList = weekListConverter
         .dateTimeToDay(

@@ -1,16 +1,16 @@
-import 'package:calendar_app/app/domain/entities/colored_days_base.dart';
+import 'package:calendar_app/app/domain/entities/remote_days_base.dart';
 import 'package:calendar_app/app/domain/repositories/calendar_holiday_repository.dart';
 import 'package:calendar_app/core/error/failures.dart';
 import 'package:calendar_app/core/usecases/usecase_holiday.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-final class GetHolidays implements UseCaseHoliday<ColoredDaysBase, Params> {
+final class GetHolidays implements UseCaseHoliday<RemoteDaysBase, Params> {
   final CalendarHolidayRepository repository;
   GetHolidays(this.repository);
 
   @override
-  Future<Either<Failure, ColoredDaysBase>> call(Params params) async =>
+  Future<Either<Failure, RemoteDaysBase>> call(Params params) async =>
       await repository.getHolidays(params.month);
 }
 

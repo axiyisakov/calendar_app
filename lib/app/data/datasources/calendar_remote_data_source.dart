@@ -1,16 +1,16 @@
-import 'package:calendar_app/app/domain/entities/colored_days_base.dart';
-import 'package:calendar_app/app/domain/entities/day_color_type_model.dart';
+import 'package:calendar_app/app/domain/entities/day_color_type.dart';
+import 'package:calendar_app/app/domain/entities/remote_days_base.dart';
 import 'package:calendar_app/core/error/exception.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 abstract interface class CalendarRemoteDataSource {
-  Future<List<DayColorTypeModel>> getDayColorTypes();
+  Future<List<DayColorType>> getDayColorTypes();
 }
 
 abstract interface class CalendarHolidayRemoteDataSource {
-  Future<ColoredDaysBase> getHolidays(String month);
+  Future<RemoteDaysBase> getHolidays(String month);
 }
 
 class CalendarRemoteDataSourceImpl
@@ -18,7 +18,7 @@ class CalendarRemoteDataSourceImpl
   late final Dio dio;
   final http.Client client;
   CalendarRemoteDataSourceImpl({required this.dio, required this.client});
-  Future<List<DayColorTypeModel>> _getDayColorFromUrl(String url) async {
+  Future<List<DayColorType>> _getDayColorFromUrl(String url) async {
     final responseData = await dio.getUri(
       Uri.parse(url),
     );
@@ -27,34 +27,34 @@ class CalendarRemoteDataSourceImpl
           .map((e) {
             debugPrint('$e');
             debugPrint(e.runtimeType.toString());
-            return DayColorTypeModel.fromJson(e as Map<String, dynamic>);
+            return DayColorType.fromJson(e as Map<String, dynamic>);
           })
           .toList()
-          .cast<DayColorTypeModel>();
+          .cast<DayColorType>();
       return data;
     } else {
       throw ServerException();
     }
   }
 
-  Future<ColoredDaysBase> _getHolidaysFromUrl(String url) async {
+  Future<RemoteDaysBase> _getHolidaysFromUrl(String url) async {
     final responseData = await dio.getUri<Map<String, dynamic>>(
       Uri.parse(url),
     );
 
     if (responseData.statusCode == 200) {
-      return ColoredDaysBase.fromJson(responseData.data!);
+      return RemoteDaysBase.fromJson(responseData.data!);
     } else {
       throw ServerException();
     }
   }
 
   @override
-  Future<List<DayColorTypeModel>> getDayColorTypes() async =>
+  Future<List<DayColorType>> getDayColorTypes() async =>
       await _getDayColorFromUrl("https://jsonkeeper.com/$version/I86U");
 
   @override
-  Future<ColoredDaysBase> getHolidays(String month) async =>
+  Future<RemoteDaysBase> getHolidays(String month) async =>
       await _getHolidaysFromUrl('https://jsonkeeper.com/$version/$month');
 
   String version = 'b';

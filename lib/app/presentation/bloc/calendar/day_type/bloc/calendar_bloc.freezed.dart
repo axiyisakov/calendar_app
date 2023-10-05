@@ -319,7 +319,7 @@ mixin _$CalendarState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<DayColorTypeModel> type) loaded,
+    required TResult Function(List<DayColorType> type) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -327,7 +327,7 @@ mixin _$CalendarState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<DayColorTypeModel> type)? loaded,
+    TResult? Function(List<DayColorType> type)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -335,7 +335,7 @@ mixin _$CalendarState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<DayColorTypeModel> type)? loaded,
+    TResult Function(List<DayColorType> type)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -423,7 +423,7 @@ class _$Empty implements Empty {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<DayColorTypeModel> type) loaded,
+    required TResult Function(List<DayColorType> type) loaded,
     required TResult Function(String message) error,
   }) {
     return empty();
@@ -434,7 +434,7 @@ class _$Empty implements Empty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<DayColorTypeModel> type)? loaded,
+    TResult? Function(List<DayColorType> type)? loaded,
     TResult? Function(String message)? error,
   }) {
     return empty?.call();
@@ -445,7 +445,7 @@ class _$Empty implements Empty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<DayColorTypeModel> type)? loaded,
+    TResult Function(List<DayColorType> type)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -537,7 +537,7 @@ class _$LoadingState implements LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<DayColorTypeModel> type) loaded,
+    required TResult Function(List<DayColorType> type) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -548,7 +548,7 @@ class _$LoadingState implements LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<DayColorTypeModel> type)? loaded,
+    TResult? Function(List<DayColorType> type)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -559,7 +559,7 @@ class _$LoadingState implements LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<DayColorTypeModel> type)? loaded,
+    TResult Function(List<DayColorType> type)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -617,7 +617,7 @@ abstract class _$$LoadedStateCopyWith<$Res> {
           _$LoadedState value, $Res Function(_$LoadedState) then) =
       __$$LoadedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<DayColorTypeModel> type});
+  $Res call({List<DayColorType> type});
 }
 
 /// @nodoc
@@ -637,7 +637,7 @@ class __$$LoadedStateCopyWithImpl<$Res>
       null == type
           ? _value._type
           : type // ignore: cast_nullable_to_non_nullable
-              as List<DayColorTypeModel>,
+              as List<DayColorType>,
     ));
   }
 }
@@ -645,11 +645,11 @@ class __$$LoadedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedState implements LoadedState {
-  const _$LoadedState(final List<DayColorTypeModel> type) : _type = type;
+  const _$LoadedState(final List<DayColorType> type) : _type = type;
 
-  final List<DayColorTypeModel> _type;
+  final List<DayColorType> _type;
   @override
-  List<DayColorTypeModel> get type {
+  List<DayColorType> get type {
     if (_type is EqualUnmodifiableListView) return _type;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_type);
@@ -683,7 +683,7 @@ class _$LoadedState implements LoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<DayColorTypeModel> type) loaded,
+    required TResult Function(List<DayColorType> type) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(type);
@@ -694,7 +694,7 @@ class _$LoadedState implements LoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<DayColorTypeModel> type)? loaded,
+    TResult? Function(List<DayColorType> type)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(type);
@@ -705,7 +705,7 @@ class _$LoadedState implements LoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<DayColorTypeModel> type)? loaded,
+    TResult Function(List<DayColorType> type)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -754,9 +754,9 @@ class _$LoadedState implements LoadedState {
 }
 
 abstract class LoadedState implements CalendarState {
-  const factory LoadedState(final List<DayColorTypeModel> type) = _$LoadedState;
+  const factory LoadedState(final List<DayColorType> type) = _$LoadedState;
 
-  List<DayColorTypeModel> get type;
+  List<DayColorType> get type;
   @JsonKey(ignore: true)
   _$$LoadedStateCopyWith<_$LoadedState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -828,7 +828,7 @@ class _$ErrorState implements ErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<DayColorTypeModel> type) loaded,
+    required TResult Function(List<DayColorType> type) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -839,7 +839,7 @@ class _$ErrorState implements ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<DayColorTypeModel> type)? loaded,
+    TResult? Function(List<DayColorType> type)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -850,7 +850,7 @@ class _$ErrorState implements ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<DayColorTypeModel> type)? loaded,
+    TResult Function(List<DayColorType> type)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
